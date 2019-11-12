@@ -1,62 +1,115 @@
-html, body {
-	position: relative;
-	width: 100%;
-	height: 100%;
-}
-
-body {
-	color: #333;
+* {
+	padding: 0;
 	margin: 0;
-	padding: 8px;
 	box-sizing: border-box;
-	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+	-webkit-font-smoothing: antialiased;
 }
 
-a {
-	color: rgb(0,100,200);
-	text-decoration: none;
+/* inspired by FHSU colors */
+:root {
+    --brand: #69B7FF;
+    --brand-light: #A4D3FF;
+    --brand-dark: #185E9E;
+    --plagiarism: #FF1F00;
+    --substitute: #FF9900;
+    --wordiness: #EFD24C;
+    --success: #FFFFFF;
+    --darkest: #000000;
+    --lightest: #FFFFFF;
 }
 
-a:hover {
-	text-decoration: underline;
+/* custom text highlight color */
+::selection {
+    background: var(--yellow);
 }
 
-a:visited {
-	color: rgb(0,80,160);
+html, body {
+	background: var(--darkest);
 }
 
-label {
-	display: block;
+h1 {
+	/*font-family: 'Eczar', serif;*/
+	font-family: DIN Alternate, sans-serif;
+	font-size: 4.5em;
+	color: var(--lightest);
 }
 
-input, button, select, textarea {
-	font-family: inherit;
-	font-size: inherit;
-	padding: 0.4em;
-	margin: 0 0 0.5em 0;
-	box-sizing: border-box;
-	border: 1px solid #ccc;
-	border-radius: 2px;
+h2 {
+	font-family: Gill Sans, sans-serif;
+	font-size: 2.5em;
+	color: var(--brand);
 }
 
-input:disabled {
-	color: #ccc;
+h3 {
+	font-family: Gill Sans, sans-serif;
+	font-size: 2.5em;
+	color: var(--lightest);
 }
 
-input[type="range"] {
-	height: 0;
+p {
+	font-family: Gill Sans, sans-serif;
+	font-size: 1.5em;
+	line-height: 1.5;
 }
 
-button {
-	color: #333;
-	background-color: #f4f4f4;
+.action-button {
+	font-family: DIN Alternate, sans-serif;
+	font-size: 1.5em;
+	color: var(--lightest);
+	border: .1em solid var(--brand);
+	border-radius: .2em;
+	background: none;
 	outline: none;
+	cursor: pointer;
+	padding: .2em .5em;
+	-moz-appearance: none;
 }
 
-button:active {
-	background-color: #ddd;
+.action-button:hover {
+	background: var(--brand-dark);
 }
 
-button:focus {
-	border-color: #666;
+.simple-button {
+	font-family: Gill Sans, sans-serif;
+	font-size: 1em;
+	background: none;
+	border: none;
+	padding: 0;
+	border-radius: 0;
+	cursor: pointer;
+	color: var(--brand-dark);
+	-moz-appearance: none;
+}
+
+.simple-button:hover {
+	background: none;
+}
+
+.right-button-area {
+	max-width: 750px;
+	margin: 50px auto;
+	text-align: right;
+}
+
+.right-button-area > .action-button {
+	margin-right: 3%;
+}
+
+input, textarea {
+	caret-color: var(--brand-light);
+}
+
+textarea {
+	width: 100%;
+	max-width: 620px;
+	margin: 0 auto;
+	display: block;
+	padding: 5%;
+	font-size: 2em;
+	background: var(--darkest);
+	color: var(--lightest);
+	font-family: Gill Sans, sans-serif;
+	border: none;
+	outline: none;
+	resize: none;
 }

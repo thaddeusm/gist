@@ -1,0 +1,18 @@
+{
+	"samples": [
+		{
+			"level": "1",
+			"text": "Juanita likes to play basketball. Her team won a game last week. Juanita scored 10 points in the game. She plans to continue playing basketball next season.",
+			"whitelist": [
+				"basketball", "team", "game", "points", "play", "playing"
+			]
+		},
+		{
+			"level": "1",
+			"text": "Yesterday was Darrel's birthday. His brother woke him up by giving him a gift. At first, he was confused.  He remembered when his brother sang the words \"Happy Birthday\".",
+			"whitelist": [
+				"yesterday", "birthday", "brother", "happy"
+			]
+		}
+	]
+}
