@@ -27,6 +27,10 @@ html, body {
 	background: var(--darkest);
 }
 
+body {
+	position: relative;
+}
+
 h1 {
 	/*font-family: 'Eczar', serif;*/
 	font-family: DIN Alternate, sans-serif;
@@ -48,13 +52,13 @@ h3 {
 
 p {
 	font-family: Gill Sans, sans-serif;
-	font-size: 1.5em;
-	line-height: 1.5;
+	font-size: 1.4em;
+	line-height: 1.4;
 }
 
 .action-button {
 	font-family: DIN Alternate, sans-serif;
-	font-size: 1.5em;
+	font-size: 1.4em;
 	color: var(--lightest);
 	border: .1em solid var(--brand);
 	border-radius: .2em;

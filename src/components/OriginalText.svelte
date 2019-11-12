@@ -35,7 +35,7 @@ section {
 	color: var(--darkest);
 	max-width: 750px;
 	margin: 0 auto;
-	padding: 3%;
+	padding: 2% 3%;
 }
 
 p {

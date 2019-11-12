@@ -50,11 +50,19 @@ onMount(async () => {
 	header {
 		height: 325px;
 	}
+
+	p {
+		padding: 0 3%;
+	}
 }
 
 @media screen and (min-width: 451px) and (max-width: 800px) {
 	header {
 		height: 275px;
+	}
+
+	p {
+		padding: 0 3%;
 	}
 }
 
@@ -76,6 +84,14 @@ p {
 
 .orange {
 	color: var(--substitute);
+}
+
+.yellow {
+	color: var(--wordiness);
+}
+
+.white {
+	color: var(--success);
 }
 
 .score-area {
@@ -100,13 +116,30 @@ a {
 			{#if analyzedText.score < 60}
 				<div class="score-area">
 					<h3>
-						Your score is {analyzedText.score}%.
+						Your score is 
+							<span 
+								class:red={analyzedText.score == 12.5}
+								class:orange={analyzedText.score == 37.5}
+								class:yellow={analyzedText.score == 62.5}
+								class:white={analyzedText.score == 87.5}
+							>
+								{analyzedText.score}
+							</span>%.
 					</h3>
 					<a href="#/" class="action-button">TRY AGAIN</a>
 				</div>
 			{:else}
 				<div class="score-area">
-					<h2>Your score is {analyzedText.score}%.</h2>
+					<h2>Your score is 
+						<span
+							class:red={analyzedText.score == 12.5}
+							class:orange={analyzedText.score == 37.5}
+							class:yellow={analyzedText.score == 62.5}
+							class:white={analyzedText.score == 87.5}
+						>
+							{analyzedText.score}
+						</span>%.
+					</h2>
 				</div>
 			{/if}
 		</section>

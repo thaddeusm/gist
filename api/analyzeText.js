@@ -29,7 +29,8 @@ const formatText = function(text, options) {
 }
 
 const checkPlagiarism = function(originalText, summary) {
-	let whitelist = ['is', 'are', 'was', 'a', 'an', 'the', ...originalText.whitelist]
+	let whitelist = ['is', 'are', 'was', 'a', 'an', 'the', ' ', ...originalText.whitelist]
+
 	let posWhitelist = ['CC', 'IN', 'MD', 'RP', 'SYM', 'CD', 'PRP', '.', ',', ':']
 
 	let results = []
@@ -50,10 +51,18 @@ const checkPlagiarism = function(originalText, summary) {
 			substitute: false
 		}
 
-		if (whitelist.indexOf(word) == -1 && posWhitelist.indexOf(obj.pos[0][1]) == -1) {
-			if (lowerCaseOriginalText.indexOf(word) !== -1) {
-				obj.plagiarized = true
-			}
+		if (lowerCaseOriginalText.indexOf(word) !== -1) {
+			obj.plagiarized = true
+		}
+
+		if (whitelist.includes(originalCase[i])) {
+			console.log('In the whitelist: ', obj.text)
+			obj.plagiarized = false
+		}
+
+		if (posWhitelist.includes(obj.pos[0][1])) {
+			console.log('In the POS whitelist: ', obj.text)
+			obj.plagiarized = false
 		}
 
 		if (!obj.plagiarized) {
@@ -84,9 +93,9 @@ const aggregateResults = function(wordAnalysis, lengthRatio) {
 		}
 	}
 
-	if (numPlagiarized > 4) {
+	if (numPlagiarized > 2) {
 		return 12.5
-	} else if (numSubstitute > 3) {
+	} else if (numSubstitute > 2) {
 		return 37.5
 	} else if (lengthRatio > .7) {
 		return 62.5

@@ -67,7 +67,11 @@ div {
 }
 
 .content-area {
-
+	display: grid;
+	align-items: center;
+	height: 135px;
+	overflow: auto;
+	background: var(--lightest);
 }
 
 p {
@@ -98,49 +102,49 @@ p {
 </section>
 <section id="content">
 	{#if content == 'red'}
-		<div id="plagiarism" class="content-area">
+		<div id="plagiarism" class="content-area red">
 			{#if showFullText == false}
-				<p class="short-text red">
+				<p class="short-text">
 					Plagiarism is borrowing words and phrases without attribution. <button class="simple-button read-more-button" on:click={() => showFullText = true}>read more</button>
 				</p>
 			{:else}
-				<p class="full-text red">
+				<p class="full-text">
 					Plagiarism is borrowing words and ideas without attribution. While common words and essential vocabulary are expected to be shared, summaries should reflect the writer's understanding of another text. The writer's own voice, sentence style, and lexicon should be apparent. <button class="simple-button read-more-button" on:click={() => showFullText = false}>read less</button>
 				</p>
 			{/if}
 		</div>
 	{:else if content == 'orange'}
-		<div id="substitute" class="content-area">
+		<div id="substitute" class="content-area orange">
 			{#if showFullText == false}
-				<p class="short-text orange">
+				<p class="short-text">
 					Finding close synonyms for words is not going far enough. <button class="simple-button read-more-button" on:click={() => showFullText = true}>read more</button>
 				</p>
 			{:else}
-				<p class="full-text orange">
+				<p class="full-text">
 					Finding close synonyms for words is not going far enough. Writing a good summary involves sharing your own understanding of what you have read. It may be easier to write your summary without the original text in view. This will make it less likely that your summary will closely match the original sentence structures. <button class="simple-button read-more-button" on:click={() => showFullText = false}>read less</button>
 				</p>
 			{/if}
 		</div>
 	{:else if content == 'yellow'}
-		<div id="wordiness" class="content-area">
+		<div id="wordiness" class="content-area yellow">
 			{#if showFullText == false}
-				<p class="short-text yellow">
+				<p class="short-text">
 					Summaries should be much shorter than the original text. <button class="simple-button read-more-button" on:click={() => showFullText = true}>read more</button>
 				</p>
 			{:else}
-				<p class="full-text yellow">
+				<p class="full-text">
 					Summaries should be much shorter than the original text. Trying to avoid plagiarism sometimes places too much emphasis on changing the style of writing as opposed to communicating the main idea of the passage. A good summary omits secondary details in favor of clarity and conciseness. <button class="simple-button read-more-button" on:click={() => showFullText = false}>read less</button>
 				</p>
 			{/if}
 		</div>
 	{:else if content == 'white'}
-		<div id="success" class="content-area">
+		<div id="success" class="content-area white">
 			{#if showFullText == false}
-				<p class="short-text white">
+				<p class="short-text">
 					Avoiding plagiarism, simple word substitutions, and wordiness are big steps... <button class="simple-button read-more-button" on:click={() => showFullText = true}>read more</button>
 				</p>
 			{:else}
-				<p class="full-text white">
+				<p class="full-text">
 					Avoiding plagiarism, simple word substitutions, and wordiness are big steps in the process of writing better summaries. Though a computer can help identify many potential weaknesses in writing, you should always ask a friend or teacher for feedback. This is particularly true in terms of evaluating how well you have captured the main idea. <button class="simple-button read-more-button" on:click={() => showFullText = false}>read less</button>
 				</p>
 			{/if}
