@@ -14,7 +14,6 @@ const unsubscribe = storedText.subscribe(value => {
 let value;
 
 function startAnalysis() {
-	console.log(value);
 	storedSummary.set({text: value});
 	push('/analyze')
 }

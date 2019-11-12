@@ -10,7 +10,7 @@ let sampleText;
 let summary;
 let analyzedText = {};
 
-$: loaded = analyzedText.hasOwnProperty('plagiarism');
+$: loaded = analyzedText.hasOwnProperty('words');
 
 const unsubscribeStoredText = storedText.subscribe(value => {
 	sampleText = value;
@@ -67,7 +67,7 @@ onMount(async () => {
 p {
 	color: var(--lightest);
 	max-width: 650px;
-	margin: 0 auto;
+	margin: 50px auto;
 }
 
 .red {
@@ -77,6 +77,18 @@ p {
 .orange {
 	color: var(--substitute);
 }
+
+.score-area {
+	text-align: center;
+}
+
+h3 {
+	margin: 30px auto;
+}
+
+a {
+	text-decoration: none;
+}
 </style>
 
 <header>
@@ -84,6 +96,18 @@ p {
 </header>
 <main>
 	{#if loaded}
+		<section id="result">
+			{#if analyzedText.score < 60}
+				<div class="score-area">
+					<h3>
+						Your score is {analyzedText.score}%.
+					</h3>
+					<a href="#/" class="action-button">TRY AGAIN</a>
+				</div>
+			{:else}
+				<h2>Your score is {analyzedText.score}%.</h2>
+			{/if}
+		</section>
 		<p>
 			{#each analyzedText.words as obj}
 				<span class:red={obj.plagiarized} class:orange={obj.substitute}>{obj.text}</span>

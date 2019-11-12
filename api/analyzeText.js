@@ -30,7 +30,7 @@ const formatText = function(text, options) {
 
 const checkPlagiarism = function(originalText, summary) {
 	let whitelist = ['is', 'are', 'was', 'a', 'an', 'the', ...originalText.whitelist]
-	let posWhitelist = ['CC', 'IN', 'MD', 'RP', 'SYM', '.', ',', ':']
+	let posWhitelist = ['CC', 'IN', 'MD', 'RP', 'SYM', 'CD', '.', ',', ':']
 
 	let results = []
 
@@ -57,7 +57,7 @@ const checkPlagiarism = function(originalText, summary) {
 		}
 
 		if (!obj.plagiarized) {
-			obj.substitute = checkSubstitutions(originalText.substitutions, obj.text)
+			obj.substitute = checkSubstitutions(originalText.subs, obj.text)
 		}
 
 		results.push(obj)
@@ -70,21 +70,42 @@ const checkSubstitutions = function(substitutions, word) {
 	return substitutions.indexOf(word) !== -1
 }
 
-const checkWordiness = function(originalText, summary) {
+const aggregateResults = function(wordAnalysis, lengthRatio) {
+	let numPlagiarized = 0
+	let numSubstitute = 0
 
-}
+	for (let i=0; i<wordAnalysis.length; i++) {
+		let word = wordAnalysis[i]
 
-const arregateResults = function(results) {
+		if (word.plagiarized) {
+			numPlagiarized++
+		} else if (word.substitute) {
+			numSubstitute++
+		}
+	}
 
+	if (numPlagiarized > 4) {
+		return 12.5
+	} else if (numSubstitute > 3) {
+		return 37.5
+	} else if (lengthRatio > .7) {
+		return 62.5
+	} else {
+		return 87.5
+	}
 }
 
 module.exports = (req, res) => {
 	let originalText = req.body.originalText
 	let summary = req.body.summary
 
-	let results = checkPlagiarism(originalText, summary)
+	let wordAnalysis = checkPlagiarism(originalText, summary)
+	let lengthRatio = summary.text.length / originalText.text.length
+	let score = aggregateResults(wordAnalysis, lengthRatio)
 
 	return res.status(200).json({
-		words: results
+		words: wordAnalysis,
+		lengthRatio: lengthRatio,
+		score: score
 	})
 }
