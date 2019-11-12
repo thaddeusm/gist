@@ -55,7 +55,7 @@ const checkPlagiarism = function(originalText, summary) {
 			obj.plagiarized = true
 		}
 
-		if (whitelist.includes(originalCase[i])) {
+		if (whitelist.includes(originalCase[i]) || whitelist.includes(word) {
 			console.log('In the whitelist: ', obj.text)
 			obj.plagiarized = false
 		}
