@@ -1,7 +1,5 @@
 import pos from 'pos'
 
-var substitutionPool = []
-
 const tagPartsOfSpeech = function(text) {
 	let words = new pos.Lexer().lex(text)
 	let tagger = new pos.Tagger()
@@ -31,8 +29,8 @@ const formatText = function(text, options) {
 }
 
 const checkPlagiarism = function(originalText, summary) {
-	let whitelist = ['is', 'are', 'was', ...originalText.whitelist]
-	let posWhitelist = ['CC', 'IN', 'MD', 'RP', '.', ',', ':']
+	let whitelist = ['is', 'are', 'was', 'a', 'an', 'the', ...originalText.whitelist]
+	let posWhitelist = ['CC', 'IN', 'MD', 'RP', 'SYM', '.', ',', ':']
 
 	let results = []
 
@@ -66,25 +64,7 @@ const checkPlagiarism = function(originalText, summary) {
 }
 
 const checkSubstitutions = function(originalText, text) {
-	if (substitutionPool.length == 0) {
-		let arr = formatText(originalText, ['no punctuation']).split(' ')
-		
-		// loop through original text words
-		for (let i=0; i<arr.length; i++) {
-			let word = arr[i]
-
-			// send request for synonyms like this https://api.datamuse.com/words?rel_syn=give
-				// push returned synonyms to pool
-		}
-
-		console.log(substitutionPool)
-	}
-
-	// loop through words in summary (obj from plagiarism check?)
-
-		// if the word is not plagiarised, check for match in synonym pool
-
-
+	
 }
 
 const checkWordiness = function(originalText, summary) {

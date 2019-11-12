@@ -1,6 +1,5 @@
 <script>
-import { navigateTo } from 'svero';
-
+import { push, pop, replace } from 'svelte-spa-router';
 import { storedText } from './../stores.js';
 import { storedSummary } from './../stores.js';
 import OriginalText from './../components/OriginalText.svelte';
@@ -17,7 +16,7 @@ let value;
 function startAnalysis() {
 	console.log(value);
 	storedSummary.set({text: value});
-	navigateTo('/game/analyze');
+	push('/analyze')
 }
 </script>
 

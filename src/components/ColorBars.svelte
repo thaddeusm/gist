@@ -74,7 +74,7 @@ p {
 	word-wrap: break-word;
 	color: var(--darkest);
 	background: var(--lightest);
-	padding: 3% 6%;
+	padding: 1% 4%;
 }
 
 .read-more-button {

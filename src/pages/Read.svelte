@@ -64,5 +64,5 @@ footer > a {
 	<OriginalText {textSample} {loaded} />
 </main>
 <footer class="right-button-area">
-	<a class="action-button" href="/game/summarize">SUMMARIZE</a>
+	<a class="action-button" href="#/summarize">SUMMARIZE</a>
 </footer>

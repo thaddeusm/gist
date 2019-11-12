@@ -59,7 +59,7 @@ main {
 
 <header>
 	<h1>Gist</h1>
-	<a class="action-button" href="/game">PLAY</a>
+	<a class="action-button" href="#/read">PLAY</a>
 </header>
 <main>
 	<h2>
