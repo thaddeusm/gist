@@ -105,7 +105,9 @@ a {
 					<a href="#/" class="action-button">TRY AGAIN</a>
 				</div>
 			{:else}
-				<h2>Your score is {analyzedText.score}%.</h2>
+				<div class="score-area">
+					<h2>Your score is {analyzedText.score}%.</h2>
+				</div>
 			{/if}
 		</section>
 		<p>

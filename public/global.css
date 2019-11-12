@@ -69,6 +69,11 @@ p {
 	background: var(--brand-dark);
 }
 
+.action-button:disabled {
+	opacity: .8;
+	cursor: not-allowed;
+}
+
 .simple-button {
 	font-family: Gill Sans, sans-serif;
 	font-size: 1em;

@@ -11,11 +11,15 @@ const unsubscribe = storedText.subscribe(value => {
 	sampleText = value;
 });
 
-let value;
+let value = '';
+
+$: summarized = value !== ''
 
 function startAnalysis() {
-	storedSummary.set({text: value});
-	push('/analyze')
+	if (value !== '') {
+		storedSummary.set({text: value});
+		push('/analyze')
+	}
 }
 </script>
 
@@ -50,7 +54,7 @@ header {
 </header>
 <main>
 	<div class="right-button-area">
-		<button class="action-button" on:click={startAnalysis}>CHECK</button>
+		<button class="action-button" on:click={startAnalysis} disabled={!summarized}>CHECK</button>
 	</div>
 	<OriginalText textSample={sampleText} loaded={true} hideable={true} />
 </main>
