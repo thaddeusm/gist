@@ -48,19 +48,19 @@ onMount(async () => {
 <style>
 @media screen and (max-width: 450px) {
 	header {
-		height: 175px;
+		height: 325px;
 	}
 }
 
 @media screen and (min-width: 451px) and (max-width: 800px) {
 	header {
-		height: 225px;
+		height: 275px;
 	}
 }
 
 @media screen and (min-width: 801px) {
 	header {
-		height: 275px;
+		height: 250px;
 	}
 }
 
