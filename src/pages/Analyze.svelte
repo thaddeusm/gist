@@ -85,7 +85,7 @@ p {
 <main>
 	{#if loaded}
 		<p>
-			{#each analyzedText.plagiarism as obj}
+			{#each analyzedText.words as obj}
 				<span class:red={obj.plagiarized} class:orange={obj.substitute}>{obj.text}</span>
 			{/each}
 		</p>
