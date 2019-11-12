@@ -73,6 +73,10 @@ p {
 .red {
 	color: var(--plagiarism);
 }
+
+.orange {
+	color: var(--substitute);
+}
 </style>
 
 <header>
@@ -82,7 +86,7 @@ p {
 	{#if loaded}
 		<p>
 			{#each analyzedText.plagiarism as obj}
-				<span class:red={obj.plagiarized}>{obj.text}</span>
+				<span class:red={obj.plagiarized} class:orange={obj.substitute}>{obj.text}</span>
 			{/each}
 		</p>
 	{/if}

@@ -46,7 +46,8 @@ const checkPlagiarism = function(originalText, summary) {
 		let obj = {
 			text: originalCase[i],
 			plagiarized: false,
-			pos: tagPartsOfSpeech(word)
+			pos: tagPartsOfSpeech(word),
+			substitute: false
 		}
 
 		if (whitelist.indexOf(word) == -1 && posWhitelist.indexOf(obj.pos[0][1]) == -1) {
@@ -55,7 +56,9 @@ const checkPlagiarism = function(originalText, summary) {
 			}
 		}
 
-		//
+		if (!obj.plagiarized) {
+			obj.substitute = checkSubstitutions(originalText.substitutions, obj.text)
+		}
 
 		results.push(obj)
 	}
@@ -63,8 +66,8 @@ const checkPlagiarism = function(originalText, summary) {
 	return results
 }
 
-const checkSubstitutions = function(originalText, text) {
-	
+const checkSubstitutions = function(substitutions, word) {
+	return substitutions.indexOf(word) !== -1
 }
 
 const checkWordiness = function(originalText, summary) {
@@ -79,10 +82,9 @@ module.exports = (req, res) => {
 	let originalText = req.body.originalText
 	let summary = req.body.summary
 
-	let plagiarismResults = checkPlagiarism(originalText, summary)
-	// checkSubstitutions(originalText.text)
+	let results = checkPlagiarism(originalText, summary)
 
 	return res.status(200).json({
-		plagiarism: plagiarismResults
+		words: results
 	})
 }
