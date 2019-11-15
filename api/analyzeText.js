@@ -56,12 +56,10 @@ const checkPlagiarism = function(originalText, summary) {
 		}
 
 		if (whitelist.includes(originalCase[i]) || whitelist.includes(word)) {
-			console.log('In the whitelist: ', obj.text)
 			obj.plagiarized = false
 		}
 
 		if (posWhitelist.includes(obj.pos[0][1])) {
-			console.log('In the POS whitelist: ', obj.text)
 			obj.plagiarized = false
 		}
 
