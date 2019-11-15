@@ -31,7 +31,7 @@ const formatText = function(text, options) {
 const checkPlagiarism = function(originalText, summary) {
 	let whitelist = ['is', 'are', 'was', 'a', 'an', 'the', ' ', ...originalText.whitelist]
 
-	let posWhitelist = ['CC', 'IN', 'MD', 'RP', 'SYM', 'CD', 'PRP', '.', ',', ':']
+	let posWhitelist = ['CC', 'IN', 'MD', 'RP', 'SYM', 'CD', 'PRP', 'PP$', '.', ',', ':']
 
 	let results = []
 

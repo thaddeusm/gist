@@ -9,6 +9,7 @@ import OriginalText from './../components/OriginalText.svelte';
 let sampleText;
 let summary;
 let analyzedText = {};
+let infoPanelToShow = null;
 
 $: loaded = analyzedText.hasOwnProperty('words');
 
@@ -43,6 +44,10 @@ onMount(async () => {
 
 	console.log(analyzedText);
 });
+
+function openInfoPanel(color) {
+	infoPanelToShow = color;
+}
 </script>
 
 <style>
@@ -108,7 +113,7 @@ a {
 </style>
 
 <header>
-	<ColorBars />
+	<ColorBars {infoPanelToShow} />
 </header>
 <main>
 	{#if loaded}
@@ -143,9 +148,25 @@ a {
 				</div>
 			{/if}
 		</section>
-		<p>
+		<p class:yellow={analyzedText.score == 62.5}>
 			{#each analyzedText.words as obj}
-				<span class:red={obj.plagiarized} class:orange={obj.substitute}>{obj.text}</span>
+				{#if obj.plagiarized}
+					<span class="red" on:mouseover={() => {openInfoPanel('red')}}>
+						{obj.text}
+					</span>
+				{:else if obj.substitute}
+					<span class="orange" on:mouseover={() => {openInfoPanel('orange')}}>
+						{obj.text}
+					</span>
+				{:else if analyzedText.lengthRatio > .7}
+					<span class="yellow" on:mouseover={() => {openInfoPanel('yellow')}}>
+						{obj.text}
+					</span>
+				{:else}
+					<span>
+						{obj.text}
+					</span>
+				{/if}
 			{/each}
 		</p>
 	{/if}

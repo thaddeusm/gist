@@ -1,4 +1,10 @@
 <script>
+export let infoPanelToShow = null;
+
+$: if (infoPanelToShow !== null) {
+	changeContent(infoPanelToShow);
+}
+
 let content;
 let showFullText = false;
 
