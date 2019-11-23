@@ -57,7 +57,7 @@ function openInfoPanel(color) {
 <style>
 @media screen and (max-width: 450px) {
 	header {
-		height: 325px;
+		height: 350px;
 	}
 
 	p {
@@ -67,7 +67,7 @@ function openInfoPanel(color) {
 
 @media screen and (min-width: 451px) and (max-width: 800px) {
 	header {
-		height: 275px;
+		height: 300px;
 	}
 
 	p {
@@ -77,7 +77,7 @@ function openInfoPanel(color) {
 
 @media screen and (min-width: 801px) {
 	header {
-		height: 250px;
+		height: 275px;
 	}
 }
 
