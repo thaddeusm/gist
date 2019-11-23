@@ -120,31 +120,11 @@ a {
 		<section id="result">
 			{#if analyzedText.score < 60}
 				<div class="score-area">
-					<h3>
-						Your score is 
-							<span 
-								class:red={analyzedText.score == 12.5}
-								class:orange={analyzedText.score == 37.5}
-								class:yellow={analyzedText.score == 62.5}
-								class:white={analyzedText.score == 87.5}
-							>
-								{analyzedText.score}
-							</span>%.
-					</h3>
 					<a href="#/" class="action-button">TRY AGAIN</a>
 				</div>
 			{:else}
 				<div class="score-area">
-					<h2>Your score is 
-						<span
-							class:red={analyzedText.score == 12.5}
-							class:orange={analyzedText.score == 37.5}
-							class:yellow={analyzedText.score == 62.5}
-							class:white={analyzedText.score == 87.5}
-						>
-							{analyzedText.score}
-						</span>%.
-					</h2>
+					<h2>Great!</h2>
 				</div>
 			{/if}
 		</section>
