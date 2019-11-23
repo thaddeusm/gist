@@ -85,6 +85,8 @@ p {
 	color: var(--darkest);
 	background: var(--lightest);
 	padding: 1% 4%;
+	max-width: 950px;
+	margin: 0 auto;
 }
 
 .read-more-button {
