@@ -3,6 +3,7 @@ import { onMount } from "svelte";
 import { storedMode, storedText, storedSummary, storedAnalysis } from './../stores.js';
 import ColorBars from './../components/ColorBars.svelte';
 import OriginalText from './../components/OriginalText.svelte';
+import Loader from './../components/Loader.svelte';
 
 let sampleText;
 let summary;
@@ -160,6 +161,8 @@ a {
 				{/if}
 			{/each}
 		</p>
+	{:else}
+		<Loader />
 	{/if}
 </main>
 <footer>

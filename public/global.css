@@ -20,7 +20,7 @@
 
 /* custom text highlight color */
 ::selection {
-    background: var(--yellow);
+    background: var(--brand-dark);
 }
 
 html, body {

@@ -2,6 +2,7 @@
 import { onMount } from "svelte";
 import { storedText } from './../stores.js';
 import OriginalText from './../components/OriginalText.svelte';
+import Loader from './../components/Loader.svelte';
 
 let textSample = '';
 $: loaded = textSample !== '';
@@ -55,9 +56,7 @@ footer > a {
 			Find the Main Idea
 		</h2>
 	{:else}
-		<h2>
-			Loading
-		</h2>
+		<Loader />
 	{/if}
 </header>
 <main>
