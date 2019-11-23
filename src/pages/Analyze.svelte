@@ -122,22 +122,28 @@ a {
 <main>
 	{#if loaded}
 		<section id="result">
-			{#if analyzedText.score < 60}
-				<div class="score-area">
-					{#if mode == 'game'}
+			{#if mode == 'game'}
+				{#if analyzedText.score < 60}
+					<div class="score-area">
 						<a href="#/" class="action-button">TRY AGAIN</a>
-					{:else}
-						<a href="#/tool" class="action-button">TRY AGAIN</a>
-					{/if}
-				</div>
-			{:else}
-				<div class="score-area">
-					{#if mode == 'game'}
+					</div>
+				{:else}
+					<div class="score-area">
 						<h2>Great!</h2>
-					{:else}
-						<h2>No instances of plagiarism found.</h2>
-					{/if}
-				</div>
+					</div>
+				{/if}
+			{:else}
+				{#if analyzedText.score > 80}
+					<div class="score-area">
+						<h2>Great!</h2>
+						<p>No major problems were found.</p>
+					</div>
+				{:else}
+					<div class="score-area">
+						<h2>This needs improvement.</h2>
+						<p>Hover over the summary text to learn more.</p>
+					</div>
+				{/if}
 			{/if}
 		</section>
 		<p class:yellow={analyzedText.score == 62.5}>
