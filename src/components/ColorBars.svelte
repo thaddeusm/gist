@@ -75,7 +75,7 @@ div {
 .content-area {
 	display: grid;
 	align-items: center;
-	height: 135px;
+	height: 175px;
 	overflow: auto;
 	background: var(--lightest);
 }
