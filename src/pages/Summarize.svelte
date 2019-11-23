@@ -1,7 +1,6 @@
 <script>
 import { push, pop, replace } from 'svelte-spa-router';
-import { storedText } from './../stores.js';
-import { storedSummary } from './../stores.js';
+import { storedText, storedSummary } from './../stores.js';
 import OriginalText from './../components/OriginalText.svelte';
 
 let sampleText;
@@ -13,12 +12,12 @@ const unsubscribe = storedText.subscribe(value => {
 
 let value = '';
 
-$: summarized = value !== ''
+$: summarized = value !== '';
 
 function startAnalysis() {
 	if (value !== '') {
 		storedSummary.set({text: value});
-		push('/analyze')
+		push('/analyze');
 	}
 }
 </script>

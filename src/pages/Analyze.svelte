@@ -1,13 +1,12 @@
 <script>
 import { onMount } from "svelte";
-import { storedText } from './../stores.js';
-import { storedSummary } from './../stores.js';
-import { storedAnalysis } from './../stores.js';
+import { storedMode, storedText, storedSummary, storedAnalysis } from './../stores.js';
 import ColorBars from './../components/ColorBars.svelte';
 import OriginalText from './../components/OriginalText.svelte';
 
 let sampleText;
 let summary;
+let mode;
 let analyzedText = {};
 let infoPanelToShow = null;
 
@@ -19,6 +18,10 @@ const unsubscribeStoredText = storedText.subscribe(value => {
 
 const unsubscribeStoredSummary = storedSummary.subscribe(value => {
 	summary = value;
+});
+
+const unsubscribeStoredMode = storedMode.subscribe(value => {
+	mode = value;
 });
 
 onMount(async () => {
@@ -120,11 +123,19 @@ a {
 		<section id="result">
 			{#if analyzedText.score < 60}
 				<div class="score-area">
-					<a href="#/" class="action-button">TRY AGAIN</a>
+					{#if mode == 'game'}
+						<a href="#/" class="action-button">TRY AGAIN</a>
+					{:else}
+						<a href="#/tool" class="action-button">TRY AGAIN</a>
+					{/if}
 				</div>
 			{:else}
 				<div class="score-area">
-					<h2>Great!</h2>
+					{#if mode == 'game'}
+						<h2>Great!</h2>
+					{:else}
+						<h2>No instances of plagiarism found.</h2>
+					{/if}
 				</div>
 			{/if}
 		</section>

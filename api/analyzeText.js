@@ -1,4 +1,7 @@
 import pos from 'pos'
+import datamuse from 'datamuse'
+
+let synonyms = []
 
 const tagPartsOfSpeech = function(text) {
 	let words = new pos.Lexer().lex(text)
@@ -29,7 +32,13 @@ const formatText = function(text, options) {
 }
 
 const checkPlagiarism = function(originalText, summary) {
-	let whitelist = ['is', 'are', 'was', 'a', 'an', 'the', ' ', ...originalText.whitelist]
+	let whitelist
+
+	if (originalText.hasOwnProperty('whitelist')) {
+		whitelist = ['is', 'are', 'was', 'a', 'an', 'the', ' ', '', ...originalText.whitelist]
+	} else {
+		whitelist = ['is', 'are', 'was', 'a', 'an', 'the', ' ', '']
+	}
 
 	let posWhitelist = ['CC', 'IN', 'MD', 'RP', 'SYM', 'CD', 'PRP', 'PRP$', 'PP$', '.', ',', ':']
 
@@ -41,6 +50,7 @@ const checkPlagiarism = function(originalText, summary) {
 
 	let wordsToCheck = lowerCaseSummary.split(/([.,\/#!$%\^&\*;:{}=\-_`~() ])/)
 	let originalCase = summary.text.split(/([.,\/#!$%\^&\*;:{}=\-_`~() ])/)
+
 	for (let i=0; i<wordsToCheck.length; i++) {
 		let word = wordsToCheck[i]
 
@@ -64,7 +74,7 @@ const checkPlagiarism = function(originalText, summary) {
 		}
 
 		if (!obj.plagiarized) {
-			obj.substitute = checkSubstitutions(originalText.subs, obj.text)
+			obj.substitute = checkForSubstitution(obj.text)
 		}
 
 		results.push(obj)
@@ -73,8 +83,34 @@ const checkPlagiarism = function(originalText, summary) {
 	return results
 }
 
-const checkSubstitutions = function(substitutions, word) {
-	return substitutions.indexOf(word) !== -1
+const getSynonyms = async function(originalText) {
+	const arr = formatText(originalText.text, ['lower case', 'no punctuation']).split(' ')
+
+	let requests = []
+
+	for (let i=0; i<arr.length; i++) {
+		let request = datamuse.words({
+			rel_syn: arr[i],
+			max: 3
+		})
+		.then((json) => {
+			for (let j=0; j<json.length; j++) {
+				let word = json[j].word
+
+				synonyms.push(word)
+			}
+		})
+
+		requests.push(request)
+	}
+
+	await Promise.all(requests).then((resolve, reject) => {
+		console.log(synonyms)
+	})
+}
+
+const checkForSubstitution = function(word) {
+	return synonyms.indexOf(word) !== -1
 }
 
 const aggregateResults = function(wordAnalysis, lengthRatio) {
@@ -106,13 +142,15 @@ module.exports = (req, res) => {
 	let originalText = req.body.originalText
 	let summary = req.body.summary
 
-	let wordAnalysis = checkPlagiarism(originalText, summary)
-	let lengthRatio = summary.text.length / originalText.text.length
-	let score = aggregateResults(wordAnalysis, lengthRatio)
+	getSynonyms(originalText).then(() => {
+		let wordAnalysis = checkPlagiarism(originalText, summary)
+		let lengthRatio = summary.text.length / originalText.text.length
+		let score = aggregateResults(wordAnalysis, lengthRatio)
 
-	return res.status(200).json({
-		words: wordAnalysis,
-		lengthRatio: lengthRatio,
-		score: score
+		return res.status(200).json({
+			words: wordAnalysis,
+			lengthRatio: lengthRatio,
+			score: score
+		})
 	})
 }
