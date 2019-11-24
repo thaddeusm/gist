@@ -26,7 +26,7 @@ if (hideable) {
 
 @media screen and (min-width: 801px) {
 	section {
-		border-radius: .5em;
+		border-radius: .2em;
 	}
 }
 

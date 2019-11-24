@@ -25,19 +25,19 @@ function startAnalysis() {
 <style>
 @media screen and (max-width: 450px) {
 	header {
-		height: 150px;
+		height: 200px;
 	}
 }
 
 @media screen and (min-width: 451px) and (max-width: 800px) {
 	header {
-		height: 200px;
+		height: 250px;
 	}
 }
 
 @media screen and (min-width: 801px) {
 	header {
-		height: 250px;
+		height: 350px;
 	}
 }	
 

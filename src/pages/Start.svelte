@@ -9,8 +9,8 @@ import ColorBars from './../components/ColorBars.svelte';
 	}
 
 	h2 {
-		margin-top: 275px;
-		margin-bottom: 150px;
+		margin-top: 250px;
+		margin-bottom: 100px;
 	}
 }
 
@@ -20,8 +20,8 @@ import ColorBars from './../components/ColorBars.svelte';
 	}
 
 	h2 {
-		margin-top: 325px;
-		margin-bottom: 200px;
+		margin-top: 300px;
+		margin-bottom: 150px;
 	}
 }
 
@@ -31,8 +31,8 @@ import ColorBars from './../components/ColorBars.svelte';
 	}
 
 	h2 {
-		margin-top: 375px;
-		margin-bottom: 250px;
+		margin-top: 350px;
+		margin-bottom: 200px;
 	}
 }	
 

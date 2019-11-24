@@ -40,7 +40,7 @@ const checkPlagiarism = function(originalText, summary) {
 		whitelist = ['is', 'are', 'was', 'a', 'an', 'the', ' ', '']
 	}
 
-	let posWhitelist = ['CC', 'IN', 'MD', 'RP', 'SYM', 'CD', 'PRP', 'PRP$', 'PP$', '.', ',', ':']
+	let posWhitelist = ['CC', 'IN', 'MD', 'RP', 'SYM', 'TO', 'CD', 'PRP', 'PRP$', 'PP$', '.', ',', ':']
 
 	let results = []
 
@@ -90,14 +90,25 @@ const getSynonyms = async function(originalText) {
 
 	for (let i=0; i<arr.length; i++) {
 		let request = datamuse.words({
-			rel_syn: arr[i],
-			max: 3
+			rel_syn: arr[i]
 		})
 		.then((json) => {
-			for (let j=0; j<json.length; j++) {
-				let word = json[j].word
+			let sorted = json.sort((a, b) => {
+				return b.score - a.score
+			})
 
-				synonyms.push(word)
+			if (sorted.length > 5) {
+				for (let j=0; j<5; j++) {
+					let word = sorted[j].word
+
+					synonyms.push(word)
+				}
+			} else {
+				for (let j=0; j<sorted.length; j++) {
+					let word = sorted[j].word
+
+					synonyms.push(word)
+				}
 			}
 		})
 

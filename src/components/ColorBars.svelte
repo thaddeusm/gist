@@ -21,8 +21,8 @@ function changeContent(section) {
 	grid-template-areas: "red orange yellow white";
 }
 
-div {
-	height: 50px;
+#buttons > div {
+	height: 15px;
 }
 
 #red {
