@@ -38,7 +38,6 @@ onMount(async () => {
 		credentials: 'same-origin', // include, *same-origin, omit
 		headers: {
 		  'Content-Type': 'application/json'
-		  // 'Content-Type': 'application/x-www-form-urlencoded',
 		},
 		body: JSON.stringify(data) // body data type must match "Content-Type" header
 	});
@@ -161,7 +160,7 @@ a {
 						{obj.text}
 					</span>
 				{:else}
-					<span>
+					<span on:mouseover={() => {openInfoPanel('white')}}>
 						{obj.text}
 					</span>
 				{/if}

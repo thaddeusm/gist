@@ -8,7 +8,7 @@ import ColorBars from './../components/ColorBars.svelte';
 		height: 200px;
 	}
 
-	h2 {
+	a {
 		margin-top: 250px;
 		margin-bottom: 100px;
 	}
@@ -19,7 +19,7 @@ import ColorBars from './../components/ColorBars.svelte';
 		height: 250px;
 	}
 
-	h2 {
+	a {
 		margin-top: 300px;
 		margin-bottom: 150px;
 	}
@@ -30,7 +30,7 @@ import ColorBars from './../components/ColorBars.svelte';
 		height: 300px;
 	}
 
-	h2 {
+	a {
 		margin-top: 350px;
 		margin-bottom: 200px;
 	}
@@ -46,9 +46,11 @@ header {
 	background: var(--darkest);
 }
 
-header > a {
+a {
 	display: block;
-	margin: 0 auto;
+	width: 100px;
+	margin-left: auto;
+	margin-right: auto;
 	text-decoration: none;
 }
 
@@ -59,12 +61,12 @@ main {
 
 <header>
 	<h1>Gist</h1>
-	<a class="action-button" href="#/read">PLAY</a>
-</header>
-<main>
 	<h2>
 		Summarize better.
 	</h2>
+</header>
+<main>
+	<a class="action-button" href="#/read">PLAY</a>
 </main>
 <footer>
 	<ColorBars />

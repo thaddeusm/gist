@@ -7,11 +7,18 @@ import Loader from './../components/Loader.svelte';
 let textSample = '';
 $: loaded = textSample !== '';
 
-onMount(async () => {
-	const res = await fetch("/api/getTextSample.js?level=1");
-	textSample = await res.json();
-	storedText.set(textSample);
+const unsubscribe = storedText.subscribe(value => {
+	textSample = value;
 });
+
+if (!textSample) {
+	onMount(async () => {
+		const res = await fetch("/api/getTextSample.js?level=1");
+		textSample = await res.json();
+		
+		storedText.set(textSample);
+	});
+}
 
 </script>
 
@@ -60,7 +67,9 @@ footer > a {
 	{/if}
 </header>
 <main>
-	<OriginalText {textSample} {loaded} />
+	{#if loaded}
+		<OriginalText {textSample} {loaded} />
+	{/if}
 </main>
 <footer class="right-button-area">
 	<a class="action-button" href="#/summarize">SUMMARIZE</a>
