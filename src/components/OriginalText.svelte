@@ -15,18 +15,21 @@ if (hideable) {
 @media screen and (max-width: 450px) {
 	section {
 		border-radius: 0;
+		padding: 8%;
 	}
 }
 
 @media screen and (min-width: 451px) and (max-width: 800px) {
 	section {
 		border-radius: 0;
+		padding: 5% 6%;
 	}
 }
 
 @media screen and (min-width: 801px) {
 	section {
 		border-radius: .2em;
+		padding: 3% 4%;
 	}
 }
 
@@ -35,18 +38,17 @@ section {
 	color: var(--darkest);
 	max-width: 750px;
 	margin: 0 auto;
-	padding: 2% 3%;
 }
 
-p {
-	
+.dark {
+	color: var(--brand-dark);
 }
 </style>
 
 {#if hide}
 	<section>
 		<p>
-			Need to look again? <button class="simple-button" on:click="{() => hide = false}">reveal text</button> 
+			Need to look again? <button class="simple-button dark" on:click="{() => hide = false}">reveal text</button> 
 		</p>
 	</section>
 {:else}
@@ -55,7 +57,7 @@ p {
 			<p>
 				{textSample.text} 
 				{#if hideable}
-					<button class="simple-button" on:click="{() => hide = true}">hide text</button>
+					<button class="simple-button dark" on:click="{() => hide = true}">hide text</button>
 				{/if}
 			</p>
 		{:else}

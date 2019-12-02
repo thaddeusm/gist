@@ -46,6 +46,10 @@ header {
 	align-items: center;
 	text-align: center;
 }
+
+main {
+	margin-bottom: 50px;
+}
 </style>
 
 <header>

@@ -5,16 +5,28 @@
 			"text": "Juanita likes to play basketball. Her team won a game last week. Juanita scored 10 points in the game. She plans to continue playing basketball next season.",
 			"whitelist": [
 				"basketball", "team", "game", "points", "play", "playing", "Juanita"
-			],
-			"subs": ["made", "intends", "resume"]
+			]
 		},
 		{
 			"level": "1",
-			"text": "Yesterday was Darrel's birthday. His brother woke him up by giving him a gift. At first, he was confused.  He remembered when his brother sang the words \"Happy Birthday\".",
+			"text": "Yesterday was Darrel's birthday. His brother woke him up by giving him a gift. At first, he was confused. He remembered when his brother sang the words \"Happy Birthday\".",
 			"whitelist": [
 				"yesterday", "birthday", "brother", "happy", "Darrel"
-			],
-			"subs": ["handing", "presenting", "present", "perplexed", "puzzled", "recalled"]
+			]
+		},
+		{
+			"level": "2",
+			"text": "Sobhuza II was the Paramount Chief and later King of Swaziland for 82 years. He is the longest-reigning monarch in recorded history. Sobhuza was born on 22 July 1899 at Zombodze Royal Residence. When he was only four months old, his father died suddenly while dancing. Sobhuza was chosen King soon after that, and his grandmother and uncle led the Swazi nation until his maturity in 1921. According to the Swaziland National Trust Commission, King Sobhuza II married 70 wives, who gave him 210 children between 1920 and 1970. At his death he had more than 1000 grandchildren. Sobhuza led Swaziland through independence until his death in 1982.",
+			"whitelist": [
+				"Swaziland", "Sobhuza", "Zombodze", "Swazi", "king", "other", "chief"
+			]
+		},
+		{
+			"level": "2",
+			"text": "Richmond Park is a 955 hectare (2,360 acres) park in outer London. The park was created by Charles I in the 17th century as a deer park. It is the largest of London's Royal Parks. It is of national and international importance for wildlife conservation. It is the largest of the eight Royal Parks in London, and is famous for red and fallow deer. It is about three times the size of Central Park in New York. Notable features in the park include Pembroke Lodge, once the home of the British Prime Minister Lord John Russell. Also in the park is White Lodge, home of the Royal Ballet School and once a royal residence. One house in the park, Thatched House Lodge, is the residence of Princess Alexandra.",
+			"whitelist": [
+				"Richmond", "London", "Charles", "Pembroke", "Lodge", "John", "Russell", "Alexandra", "Thatched", "House"
+			]
 		}
 	]
 }

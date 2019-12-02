@@ -40,13 +40,13 @@ h1 {
 
 h2 {
 	font-family: Gill Sans, sans-serif;
-	font-size: 2.2em;
+	font-size: 2em;
 	color: var(--brand);
 }
 
 h3 {
 	font-family: Gill Sans, sans-serif;
-	font-size: 2.2em;
+	font-size: 2em;
 	color: var(--lightest);
 }
 
@@ -86,7 +86,7 @@ p {
 	padding: 0;
 	border-radius: 0;
 	cursor: pointer;
-	color: var(--brand-dark);
+	color: var(--brand-light);
 	-moz-appearance: none;
 }
 

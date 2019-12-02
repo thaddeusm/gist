@@ -6,6 +6,7 @@
 	import Summarize from './pages/Summarize.svelte';
 	import Analyze from './pages/Analyze.svelte';
 	import AnalysisTool from './pages/AnalysisTool.svelte';
+	import About from './pages/About.svelte';
 
 	const routes = {
 	    '/': Start,
@@ -13,6 +14,7 @@
 	    '/summarize': Summarize,
 	    '/analyze': Analyze,
 	    '/tool': AnalysisTool,
+	    '/about': About,
 	    '*': Start
 	}
 </script>

@@ -1,19 +1,25 @@
 <script>
 import { onMount } from "svelte";
-import { storedText } from './../stores.js';
+import { storedText, gameProgress } from './../stores.js';
 import OriginalText from './../components/OriginalText.svelte';
 import Loader from './../components/Loader.svelte';
 
 let textSample = '';
+let progress;
+
 $: loaded = textSample !== '';
 
 const unsubscribe = storedText.subscribe(value => {
 	textSample = value;
 });
 
+const unsubscribeGameProgress = gameProgress.subscribe(value => {
+	progress = value;
+});
+
 if (!textSample) {
 	onMount(async () => {
-		const res = await fetch("/api/getTextSample.js?level=1");
+		const res = await fetch(`/api/getTextSample.js?level=${progress}`);
 		textSample = await res.json();
 		
 		storedText.set(textSample);
@@ -25,7 +31,7 @@ if (!textSample) {
 <style>
 @media screen and (max-width: 450px) {
 	header {
-		height: 150px;
+		height: 180px;
 	}
 }
 
@@ -59,6 +65,9 @@ footer > a {
 
 <header>
 	{#if loaded}
+		<h3>
+			Level {progress}
+		</h3>
 		<h2>
 			Find the Main Idea
 		</h2>

@@ -90,7 +90,7 @@ p {
 }
 
 .read-more-button {
-	
+	color: var(--brand-dark);
 }
 </style>
 

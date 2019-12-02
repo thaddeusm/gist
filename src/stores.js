@@ -7,3 +7,5 @@ export const storedText = writable('');
 export const storedSummary = writable('');
 
 export const storedAnalysis = writable('');
+
+export const gameProgress = writable(1);

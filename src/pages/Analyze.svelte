@@ -1,6 +1,8 @@
 <script>
 import { onMount } from "svelte";
-import { storedMode, storedText, storedSummary, storedAnalysis } from './../stores.js';
+import { storedMode, storedText, storedSummary, storedAnalysis, gameProgress } from './../stores.js';
+import { push, pop, replace } from 'svelte-spa-router';
+
 import ColorBars from './../components/ColorBars.svelte';
 import OriginalText from './../components/OriginalText.svelte';
 import Loader from './../components/Loader.svelte';
@@ -8,6 +10,7 @@ import Loader from './../components/Loader.svelte';
 let sampleText;
 let summary;
 let mode;
+let progress;
 let analyzedText = {};
 let infoPanelToShow = null;
 
@@ -23,6 +26,10 @@ const unsubscribeStoredSummary = storedSummary.subscribe(value => {
 
 const unsubscribeStoredMode = storedMode.subscribe(value => {
 	mode = value;
+});
+
+const unsubscribeGameProgress = gameProgress.subscribe(value => {
+	progress = value;
 });
 
 onMount(async () => {
@@ -45,18 +52,30 @@ onMount(async () => {
 	analyzedText = await res.json();
 	storedAnalysis.set(analyzedText);
 
-	console.log(analyzedText);
+	setGameProgress(analyzedText);
 });
 
 function openInfoPanel(color) {
 	infoPanelToShow = color;
+}
+
+function setGameProgress(analyzedText) {
+	if (analyzedText.score > 80) {
+		gameProgress.update((n) => n + 1);
+		localStorage.setItem('level', progress);
+	}
+}
+
+function startNextLevel() {
+	storedText.set('');
+	push('/read')
 }
 </script>
 
 <style>
 @media screen and (max-width: 450px) {
 	header {
-		height: 350px;
+		height: 250px;
 	}
 
 	p {
@@ -66,7 +85,7 @@ function openInfoPanel(color) {
 
 @media screen and (min-width: 451px) and (max-width: 800px) {
 	header {
-		height: 300px;
+		height: 265px;
 	}
 
 	p {
@@ -113,6 +132,10 @@ h3 {
 a {
 	text-decoration: none;
 }
+
+footer {
+	margin: 50px auto 50px auto;
+}
 </style>
 
 <header>
@@ -124,11 +147,11 @@ a {
 			{#if mode == 'game'}
 				{#if analyzedText.score < 60}
 					<div class="score-area">
-						<a href="#/" class="action-button">TRY AGAIN</a>
+						<a href="#/summarize" class="action-button">TRY AGAIN</a>
 					</div>
 				{:else}
 					<div class="score-area">
-						<h2>Great!</h2>
+						<button on:click={startNextLevel} class="action-button">CONTINUE</button>
 					</div>
 				{/if}
 			{:else}
