@@ -68,7 +68,14 @@ function setGameProgress(analyzedText) {
 
 function startNextLevel() {
 	storedText.set('');
-	push('/read')
+	push('/read');
+}
+
+function endGame() {
+	storedText.set('');
+	storedAnalysis.set('');
+	localStorage.setItem('level', 1);
+	push('/');
 }
 </script>
 
@@ -125,8 +132,8 @@ p {
 	text-align: center;
 }
 
-h3 {
-	margin: 30px auto;
+h2 {
+	margin: 0 auto 30px auto;
 }
 
 a {
@@ -149,9 +156,14 @@ footer {
 					<div class="score-area">
 						<a href="#/summarize" class="action-button">TRY AGAIN</a>
 					</div>
-				{:else}
+				{:else if analyzedText.score > 60 && progress !== 4}
 					<div class="score-area">
 						<button on:click={startNextLevel} class="action-button">CONTINUE</button>
+					</div>
+				{:else}
+					<div class="score-area">
+						<h2>You have finished the game!</h2>
+						<button on:click={endGame} class="action-button">END</button>
 					</div>
 				{/if}
 			{:else}

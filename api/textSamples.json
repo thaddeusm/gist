@@ -27,6 +27,20 @@
 			"whitelist": [
 				"Richmond", "London", "Charles", "Pembroke", "Lodge", "John", "Russell", "Alexandra", "Thatched", "House"
 			]
+		},
+		{
+			"level": "3",
+			"text": "Northwestern Albania was struck by a strong 6.4-magnitude earthquake with an epicentre 12 kilometres (7.5 mi) west-southwest of Mamurras on 26 November 2019. The tremor was felt in Albania's capital Tirana, and in places as far away as Belgrade, some 370 kilometres to the (230 mi) northeast. A total of 52 people were killed in the earthquake, with around 2,000 injured. It was the strongest earthquake to hit Albania in more than 40 years. Albanian soldiers, numbering in the hundreds, and some 2,000 Albanian police officers were dispatched to the earthquake affected localities. 2,500 people were displaced by the earthquake. The Albanian government has established a monetary compensation scheme that would give the families of deceased people scholarships to children, pensions for the elderly and 1 million lek ($9,000) for a family.",
+			"whitelist": [
+				"Albania", "earthquake", "Tirana"
+			]
+		},
+		{
+			"level": "3",
+			"text": "Robert William Hamilton was a British archaeologist and academic. In 1929, Hamilton was involved in the excavation of Jerash in Jordan, and that of Tel Megiddo in Palestine. In 1930, he returned to Jerash and also assisted in the excavation of the pyramid at Meidum. From 1931 to 1938, he was Chief Inspector of Antiquities in the British Mandate of Palestine. He was appointed Director of Antiquities in Palestine in 1938 and officially held the position until 1948. His career in the Near East was interrupted my World War II and the Jewish insurgency in Palestine. He was forced to leave Palestine with the creation of the State of Israel in 1948. From 1948 to 1949, he was Secretary-Librarian of the British School of Archaeology in Iraq. He taught for several years at Oxford, but did not enjoy lecturing. He applied, and was accepted, for the post of Keeper of Department of Antiquities at the Ashmolean Museum in 1956. He retired in 1972 and moved to rural Suffolk, where he spent his time writing.",
+			"whitelist": [
+				"Robert", "William", "Hamilton", "British", "Middle", "East", "archaeologist", "museum"
+			]
 		}
 	]
 }
