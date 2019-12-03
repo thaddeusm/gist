@@ -1,4 +1,5 @@
 {
+	"version": 2,
 	"alias": ["gist-game.now.sh"],
 	"env": {
 		"DB_USERNAME": "@db-username",
