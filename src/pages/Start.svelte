@@ -1,14 +1,19 @@
 <script>
 import { onMount } from "svelte";
-import { gameProgress } from './../stores.js';
+import { gameProgress, storedScore } from './../stores.js';
 
 import TitleHeader from './../components/TitleHeader.svelte';
 import ColorBars from './../components/ColorBars.svelte';
 
 let progress;
+let score;
 
 const unsubscribeGameProgress = gameProgress.subscribe(value => {
 	progress = value;
+});
+
+const unsubscribeStoredScore = storedScore.subscribe(value => {
+	score = value;
 });
 
 function checkProgress() {
@@ -16,10 +21,16 @@ function checkProgress() {
 
 	let levelInt = parseInt(storedLevel);
 
-	console.log('Level retrieved from storage: ', levelInt);
+	let localScore = localStorage.getItem('score');
 
-	if (levelInt) {
+	let scoreInt = parseInt(storedScore);
+
+	console.log('Level retrieved from storage: ', levelInt);
+	console.log('Score retrieved from storage: ', scoreInt);
+
+	if (levelInt && scoreInt) {
 		gameProgress.set(levelInt);
+		storedScore.set(scoreInt);
 	} else {
 		gameProgress.set(1);
 	}
@@ -27,6 +38,11 @@ function checkProgress() {
 
 onMount(async () => {
 	checkProgress();
+
+	let res = await fetch(`/api/getScoreboard.js`);
+	let scores = await res.json();
+	
+	console.log(scores)
 });
 </script>
 

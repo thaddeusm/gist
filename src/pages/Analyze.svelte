@@ -1,6 +1,6 @@
 <script>
 import { onMount } from "svelte";
-import { storedMode, storedText, storedSummary, storedAnalysis, gameProgress } from './../stores.js';
+import { storedMode, storedText, storedSummary, storedAnalysis, gameProgress, storedScore } from './../stores.js';
 import { push, pop, replace } from 'svelte-spa-router';
 
 import ColorBars from './../components/ColorBars.svelte';
@@ -11,6 +11,7 @@ let sampleText;
 let summary;
 let mode;
 let progress;
+let score;
 let analyzedText = {};
 let infoPanelToShow = null;
 
@@ -30,6 +31,10 @@ const unsubscribeStoredMode = storedMode.subscribe(value => {
 
 const unsubscribeGameProgress = gameProgress.subscribe(value => {
 	progress = value;
+});
+
+const unsubscribeStoredScore = storedScore.subscribe(value => {
+	score = value;
 });
 
 onMount(async () => {
@@ -60,10 +65,16 @@ function openInfoPanel(color) {
 }
 
 function setGameProgress(analyzedText) {
+	updateScore();
 	if (analyzedText.score > 80) {
 		gameProgress.update((n) => n + 1);
 		localStorage.setItem('level', progress);
 	}
+}
+
+function updateScore() {
+	storedScore.update((n) => n + analyzedText.score);
+	localStorage.setItem('score', score);
 }
 
 function startNextLevel() {

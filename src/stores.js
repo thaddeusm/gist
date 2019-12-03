@@ -9,3 +9,5 @@ export const storedSummary = writable('');
 export const storedAnalysis = writable('');
 
 export const gameProgress = writable(1);
+
+export const storedScore = writable(0);

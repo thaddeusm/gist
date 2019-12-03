@@ -12,6 +12,7 @@
   },
   "dependencies": {
     "datamuse": "^1.0.5",
+    "mongodb": "^3.3.5",
     "pos": "^0.4.2",
     "sirv-cli": "^0.4.4",
     "svelte-spa-router": "^1.3.0"

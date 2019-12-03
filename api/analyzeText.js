@@ -144,6 +144,8 @@ const aggregateResults = function(wordAnalysis, lengthRatio) {
 		return 37.5
 	} else if (lengthRatio > .7) {
 		return 62.5
+	} else if (numPlagiarized == 0 && numSubstitute == 0) {
+		return 100
 	} else {
 		return 87.5
 	}
