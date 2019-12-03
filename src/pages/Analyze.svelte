@@ -133,7 +133,7 @@ p {
 }
 
 h2 {
-	margin: 0 auto 30px auto;
+	margin: -20px auto 40px auto;
 }
 
 a {

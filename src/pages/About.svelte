@@ -41,10 +41,10 @@ footer {
 		Gist is a serious game to help students improve their ability to summarize texts they read, while avoiding inadvertent plagiarism.
 	</PrettyParagraph>
 	<PrettyParagraph>
-		The game currently includes three levels that challenge the player to find the main idea and develop a concise summary from texts that are progressively difficult.  While text samples for the first level are original, texts for the second and third levels are adapted from Wikipedia articles.
+		The game currently includes three levels that challenge the player to find the main idea and develop a concise summary from texts that progress in difficulty.  While text samples for the first level are original, texts for the second and third levels are adapted from Wikipedia articles.
 	</PrettyParagraph>
 	<PrettyParagraph>
-		Click on the colors below to learn more about how Gist evaluates summaries.
+		Select the colors below to learn more about how Gist evaluates summaries.
 	</PrettyParagraph>
 </main>
 <footer>
