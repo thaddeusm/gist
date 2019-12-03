@@ -1,6 +1,6 @@
 <script>
 import { onMount } from "svelte";
-import { storedText, gameProgress } from './../stores.js';
+import { storedText, gameProgress, storedScore } from './../stores.js';
 import OriginalText from './../components/OriginalText.svelte';
 import Loader from './../components/Loader.svelte';
 

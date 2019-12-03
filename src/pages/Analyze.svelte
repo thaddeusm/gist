@@ -73,7 +73,8 @@ function setGameProgress(analyzedText) {
 }
 
 function updateScore() {
-	storedScore.update((n) => n + analyzedText.score);
+	storedScore.update((n) => n + parseInt(analyzedText.score));
+	console.log(score)
 	localStorage.setItem('score', score);
 }
 

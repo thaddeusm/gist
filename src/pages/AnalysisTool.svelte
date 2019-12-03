@@ -6,7 +6,7 @@ import Loader from './../components/Loader.svelte';
 storedMode.set('tool');
 
 let originalText,
-	summary
+	summary;
 
 const unsubscribeStoredText = storedText.subscribe(value => {
 	originalText = value.text;

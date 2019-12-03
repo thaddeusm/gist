@@ -23,7 +23,7 @@ function checkProgress() {
 
 	let localScore = localStorage.getItem('score');
 
-	let scoreInt = parseInt(storedScore);
+	let scoreInt = parseInt(localScore);
 
 	console.log('Level retrieved from storage: ', levelInt);
 	console.log('Score retrieved from storage: ', scoreInt);
@@ -33,16 +33,12 @@ function checkProgress() {
 		storedScore.set(scoreInt);
 	} else {
 		gameProgress.set(1);
+		storedScore.set(0);
 	}
 }
 
 onMount(async () => {
 	checkProgress();
-
-	let res = await fetch(`/api/getScoreboard.js`);
-	let scores = await res.json();
-	
-	console.log(scores)
 });
 </script>
 
