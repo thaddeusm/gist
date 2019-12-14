@@ -58,6 +58,8 @@ onMount(async () => {
 	storedAnalysis.set(analyzedText);
 
 	setGameProgress(analyzedText);
+
+	console.log(analyzedText)
 });
 
 function openInfoPanel(color) {
@@ -140,6 +142,10 @@ p {
 	color: var(--success);
 }
 
+.punctuation {
+	margin-left: -5px;
+}
+
 .score-area {
 	text-align: center;
 }
@@ -195,19 +201,19 @@ footer {
 		<p class:yellow={analyzedText.score == 62.5}>
 			{#each analyzedText.words as obj}
 				{#if obj.plagiarized}
-					<span class="red" on:mouseover={() => {openInfoPanel('red')}}>
+					<span class="red" class:punctuation={obj.pos[0][1] == '.' || obj.pos[0][1] == ','} on:mouseover={() => {openInfoPanel('red')}}>
 						{obj.text}
 					</span>
 				{:else if obj.substitute}
-					<span class="orange" on:mouseover={() => {openInfoPanel('orange')}}>
+					<span class="orange" class:punctuation={obj.pos[0][1] == '.' || obj.pos[0][1] == ','} on:mouseover={() => {openInfoPanel('orange')}}>
 						{obj.text}
 					</span>
 				{:else if analyzedText.lengthRatio > .7}
-					<span class="yellow" on:mouseover={() => {openInfoPanel('yellow')}}>
+					<span class="yellow" class:punctuation={obj.pos[0][1] == '.' || obj.pos[0][1] == ','} on:mouseover={() => {openInfoPanel('yellow')}}>
 						{obj.text}
 					</span>
 				{:else}
-					<span on:mouseover={() => {openInfoPanel('white')}}>
+					<span class:punctuation={obj.pos[0][1] == '.' || obj.pos[0][1] == ','} on:mouseover={() => {openInfoPanel('white')}}>
 						{obj.text}
 					</span>
 				{/if}
