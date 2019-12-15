@@ -45,6 +45,7 @@ function startAnalysis() {
 main {
 	display: grid;
 	align-items: center;
+	grid-gap: 1.5em;
 	text-align: center;
 }
 </style>
